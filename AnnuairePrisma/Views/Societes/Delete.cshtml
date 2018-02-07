@@ -1,0 +1,80 @@
+﻿@model AnnuairePrisma.Models.Societes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Etes-vous sûr de vouloir supprimer cette société?</h3>
+<div>
+    <h4>Societes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raisonSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raisonSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.standard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.standard)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

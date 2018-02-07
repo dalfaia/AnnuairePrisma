@@ -1,0 +1,74 @@
+﻿@model AnnuairePrisma.Models.Societes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Détails</h2>
+
+<div>
+    <h4>Societes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raisonSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raisonSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.standard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.standard)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.idSociete }) |
+    @Html.ActionLink("Retour", "Index")
+</p>
