@@ -1,0 +1,11 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Annuaire/v15/.suo
+/.vs/AnnuairePrisma/v15/Server/sqlite3/storage.ide-wal
+/.vs/AnnuairePrisma/v15/Server/sqlite3/storage.ide-shm
+/.vs/AnnuairePrisma/v15/Server/sqlite3/storage.ide
+/.vs/AnnuairePrisma/v15/Server/sqlite3/db.lock
+/.vs/AnnuairePrisma/v15/.suo
+/.vs/config/applicationhost.config
