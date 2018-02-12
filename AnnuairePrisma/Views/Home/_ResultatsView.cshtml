@@ -1,0 +1,31 @@
+﻿@model List<AnnuairePrisma.Models.ResultatRechercheSocieteContact>
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%;">
+    <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric" colspan="2">Résultats de recherche (@this.Model.Count)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (this.Model != null && this.Model.Any())
+            {
+                foreach (var resultat in this.Model)
+                {
+                    <tr style="cursor:pointer;" onclick="window.location.href = '@resultat.URL';">
+                        <td class="mdl-data-table__cell--non-numeric" width="30">
+                            <i class='fa fa-2x fa-@resultat.Icon'></i>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">@resultat.Libelle</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr style="cursor:pointer;" >
+                    <td class="mdl-data-table__cell--non-numeric" colspan="2">Aucun résultat</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
