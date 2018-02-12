@@ -4,7 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Détails</h2>
+<div class="mdl-card mdl-shadow--2dp" >
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">@Html.DisplayFor(model => model.nom)</h2>
+    </div>
+    <div class="mdl-card__media">
+        <img src="photo.jpg" width="220" height="140" border="0" alt="" style="padding:20px;">
+    </div>
+    <div class="mdl-card__supporting-text">
+        This text might describe the photo and provide further information, such as where and
+        when it was taken.
+    </div>
+    <div class="mdl-card__actions">
+        <a href="(URL or function)">Related Action</a>
+    </div>
+</div>
+
+
+
+
 
 <div>
     <h4>Societes</h4>

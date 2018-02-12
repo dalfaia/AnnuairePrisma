@@ -225,6 +225,32 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AjaxLiveSearch\core\AjaxProcessor.php" />
+    <Content Include="AjaxLiveSearch\core\Config.template.php" />
+    <Content Include="AjaxLiveSearch\core\DB.php" />
+    <Content Include="AjaxLiveSearch\core\Handler.php" />
+    <Content Include="AjaxLiveSearch\core\index.html" />
+    <Content Include="AjaxLiveSearch\css\ajaxlivesearch.css" />
+    <Content Include="AjaxLiveSearch\css\ajaxlivesearch.min.css" />
+    <Content Include="AjaxLiveSearch\css\animation.css" />
+    <Content Include="AjaxLiveSearch\css\fontello-codes.css" />
+    <Content Include="AjaxLiveSearch\css\fontello-embedded.css" />
+    <Content Include="AjaxLiveSearch\css\fontello-ie7-codes.css" />
+    <Content Include="AjaxLiveSearch\css\fontello-ie7.css" />
+    <Content Include="AjaxLiveSearch\css\fontello.css" />
+    <Content Include="AjaxLiveSearch\css\index.html" />
+    <Content Include="AjaxLiveSearch\font\fontello.svg" />
+    <Content Include="AjaxLiveSearch\font\index.html" />
+    <Content Include="AjaxLiveSearch\img\green_loader.gif" />
+    <Content Include="AjaxLiveSearch\img\index.html" />
+    <Content Include="AjaxLiveSearch\index.php" />
+    <Content Include="AjaxLiveSearch\js\ajaxlivesearch.js" />
+    <Content Include="AjaxLiveSearch\js\ajaxlivesearch.min.js" />
+    <Content Include="AjaxLiveSearch\js\index.html" />
+    <Content Include="AjaxLiveSearch\js\jquery-1.11.1.min.js" />
+    <Content Include="AjaxLiveSearch\LICENSE.txt" />
+    <Content Include="AjaxLiveSearch\templates\default.php" />
+    <Content Include="AjaxLiveSearch\templates\hiddenColumn.php" />
     <Content Include="App_Data\aspnet-AnnuairePrisma-20180203092218.mdf" />
     <Content Include="App_Data\aspnet-AnnuairePrisma-20180203092218_log.ldf">
       <DependentUpon>aspnet-AnnuairePrisma-20180203092218.mdf</DependentUpon>
@@ -274,6 +300,11 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="AjaxLiveSearch\font\fontello.eot" />
+    <Content Include="AjaxLiveSearch\font\fontello.ttf" />
+    <Content Include="AjaxLiveSearch\font\fontello.woff" />
+    <Content Include="AjaxLiveSearch\.gitignore" />
+    <Content Include="AjaxLiveSearch\README.md" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />

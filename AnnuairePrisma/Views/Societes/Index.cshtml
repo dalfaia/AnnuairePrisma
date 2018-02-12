@@ -4,34 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#tableSocietes').DataTable();
-    });
-</script>
-
-<h2>Liste des sociétés</h2>
-
-<p>
-    @Html.ActionLink("Nouvelle", "Create")
-</p>
-<table id="tableSocietes" class="table table-sm">
-    <thead class="thead-light">
+<table id="tableSocietes" class="mdl-data-table mdl-js-data-table" align="center">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.nom)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.raisonSociale)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.adresse1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.adresse2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.codePostal)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ville)
@@ -45,36 +25,28 @@
 
     <tbody>
         @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.raisonSociale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.adresse1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.adresse2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codePostal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ville)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.standard)
-            </td>
-            <td>
-                @Html.ActionLink("Contacts", "Liste","Contacts", new { idSociete = item.idSociete }, new { @class = "btn btn-secondary" }) |
-                @Html.ActionLink("Détails", "Details", new { id = item.idSociete }, new { @class = "btn btn-outline-primary" }) |
-                @Html.ActionLink("Edition", "Edit", new { id = item.idSociete }, new { @class = "btn btn-outline-secondary" }) |
-                @Html.ActionLink("Suppression", "Delete", new { id = item.idSociete }, new { @class = "btn btn-outline-danger" })
-            </td>
-        </tr>
-}
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.raisonSociale)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ville)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.standard)
+                </td>
+                <td>
+                    @Html.ActionLink("Contacts", "Liste", "Contacts", new { idSociete = item.idSociete }, new { @class = "btn btn-secondary" }) |
+                    @Html.ActionLink("Détails", "Details", new { id = item.idSociete }, new { @class = "btn btn-outline-primary" }) |
+                    @Html.ActionLink("Edition", "Edit", new { id = item.idSociete }, new { @class = "btn btn-outline-secondary" }) |
+                    @Html.ActionLink("Suppression", "Delete", new { id = item.idSociete }, new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
