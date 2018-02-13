@@ -34,11 +34,14 @@ namespace AnnuairePrisma.Controllers
         [HttpGet]
         public async Task<ActionResult> RechercherSocietesOuContacts(string recherche)
         {
+            if (string.IsNullOrEmpty(recherche))
+                return PartialView("_ResultatsView", null);
+
             List<ResultatRechercheSocieteContact> resultats = new List<ResultatRechercheSocieteContact>();
 
             List<ResultatRechercheSocieteContact> resultatsSocietes = db.Societe.Where(s => s.nom.Contains(recherche) || s.raisonSociale.Contains(recherche)).ToList().Select(s => new ResultatRechercheSocieteContact(s)).ToList();
             List<ResultatRechercheSocieteContact> resultatsContacts = db.Contact.Where(s => s.nom.Contains(recherche) || s.prenom.Contains(recherche)).ToList().Select(c => new ResultatRechercheSocieteContact(c)).ToList();
-
+            
             resultats.AddRange(resultatsSocietes);
             resultats.AddRange(resultatsContacts);
 
