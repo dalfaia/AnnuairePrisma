@@ -13,22 +13,190 @@
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <title>@ViewBag.Title - Annuaire PrismaSoft</title>
 
+    @{
 
+        AnnuairePrisma.Models.ApplicationDbContext db = new AnnuairePrisma.Models.ApplicationDbContext();
+    }
 </head>
 <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Annuaire PrismaSoft</span>
+            </div>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Accueil</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Sociétés</a>
+                <a href="#fixed-tab-3" class="mdl-layout__tab">Contacts</a>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Annuaire</span>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                <div class="page-content">
+                    <script>
+    function searchSocieteContact(value) {
+        $.ajax({
+            url: '@Url.Action("RechercherSocietesOuContacts")?recherche=' + value,
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $("#divResultats").html(result);
+            }
+        });
+    }
+                    </script>
+                    <div style="margin-top:50px;text-align:center;">
+
+                        <div class="mdl-textfield mdl-js-textfield" style="width:80%;">
+                            @Html.TextBox("tbSearch", "", new { placeholder = "Rechercher la société ou le contact...", @class = "mdl-textfield__input", onkeyup = "searchSocieteContact(this.value);" })
+                            <div id="divResultats" class="mdl-data-table mdl-js-data-table">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone" style="width:140px">
+
+                            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="width:130px">
+                                <div class="mdl-card__title mdl-card--expand">
+                                    <h6>
+                                        Nouvelle <br />
+                                        société
+                                    </h6>
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+
+                                </div>
+
+                                <dialog class="mdl-dialog">
+                                    <h4 class="mdl-dialog__title">Allow data collection?</h4>
+                                    <div class="mdl-dialog__content">
+                                        <p>
+                                            Allowing us to collect data will let us get you the information you want faster.
+                                        </p>
+                                    </div>
+                                    <div class="mdl-dialog__actions">
+                                        <button type="button" class="mdl-button">Agree</button>
+                                        <button type="button" class="mdl-button close">Disagree</button>
+                                    </div>
+                                </dialog>
+
+
+                                <script>
+                                    var dialog = document.querySelector('dialog');
+                                    var showDialogButton = document.querySelector('#show-dialog');
+                                    if (!dialog.showModal) {
+                                        dialogPolyfill.registerDialog(dialog);
+                                    }
+                                    showDialogButton.addEventListener('click', function () {
+                                        dialog.showModal();
+                                    });
+                                    dialog.querySelector('.close').addEventListener('click', function () {
+                                        dialog.close();
+                                    });
+                                </script>
+                            </div>
+
+                        </div>
+                        @{
+                            foreach (var societe in db.Societe.OrderBy(s => s.nom))
+                            {
+
+                                <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone" style="width:140px">
+
+                                    <div class="demo-card-event mdl-card mdl-shadow--2dp" style="width:130px">
+                                        <div class="mdl-card__title mdl-card--expand">
+                                            @societe.nom <br />
+                                            @societe.standard
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                                Détails
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                <div class="page-content">
+                    <center>
+                        <table class="mdl-data-table mdl-js-data-table" style="margin-top:50px; text-align:center; width:80%;">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Société</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Nom / Prénom</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Fonction</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Téléphone</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Mail</th>
+                                    <th class="mdl-data-table__cell--non-numeric"></th>
+                                </tr>
+                            </thead>
+
+                            @{
+                                foreach (var contact in db.Contact)
+                                {
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">@contact.Societes.nom</td>
+                                            <td class="mdl-data-table__cell--non-numeric">@contact.nom</td>
+                                            <td class="mdl-data-table__cell--non-numeric">@contact.fonction</td>
+                                            <td>@contact.telportable</td>
+                                            <td class="mdl-data-table__cell--non-numeric">@contact.mail</td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", "Contacts", new { id = contact.idContact }, new { @class = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" }) |
+                                                @Html.ActionLink("Details", "Details", "Contacts", new { id = contact.idContact }, null)  |
+                                                @Html.ActionLink("Delete", "Delete", "Contacts", new { id = contact.idContact }, null)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            }
+                        </table>
+                    </center>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Annuaire</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" @Html.ActionLink("Nouvelle", "Create","Societes")</a>
-                <a class="mdl-navigation__link" @Html.ActionLink("Accueil", "Index", "Home")</a>
-                <a class="mdl-navigation__link" @Html.ActionLink("À propos de", "About", "Home")</a>
-                <a class="mdl-navigation__link" @Html.ActionLink("Contact", "Contact", "Home")</a>
+                <a class="mdl-navigation__link" @Html.ActionLink("Sociétés", "Index", "Societes")</a>
+                <a class="mdl-navigation__link" @Html.ActionLink("Contacts", "Index", "Contacts")</a>
+                <a class="mdl-navigation__link" @Html.ActionLink("Sociétés", "Index", "Societes")</a>
+                <a class="mdl-navigation__link" @Html.ActionLink("Contacts", "Index", "Contacts")</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">   @RenderBody()</div>
         </main>
-    </div>
+    </div>-->
 </body>
 </html>

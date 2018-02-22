@@ -37,9 +37,13 @@ namespace AnnuairePrisma.Controllers
         }
 
         // GET: Contacts/Create
-        public ActionResult Create()
+        public ActionResult Create(int? idSociete)
         {
-            ViewBag.idSociete = new SelectList(db.Societe, "idSociete", "nom");
+            if (idSociete != null)
+
+                ViewBag.idSociete = new SelectList(db.Societe, "idSociete", "nom", idSociete.Value);
+            else
+                ViewBag.idSociete = new SelectList(db.Societe, "idSociete", "nom");
             return View();
         }
 
